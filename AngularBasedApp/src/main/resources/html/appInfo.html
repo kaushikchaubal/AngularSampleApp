@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="appInfo">
+<head>
+    <title>App Details</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+</head>
+<body>
+
+<div class="container">
+
+    <div ng-controller="AppInfoController">
+        <alert ng-model="response">
+            <pre>Response = {{response | json}}</pre>
+        </alert>
+
+        <form role="form">
+            <div class="form-group">
+                <label for="app.name" class="control-label">Name</label>
+                <input type="text" ng-model="app.name" class="form-control">
+            </div>
+            
+            <div class="form-group">
+                <label for="app.version" class="control-label">Version</label>
+                <select ng-model="app.version" ng-options="version for version in versions" ng-required="true"
+                        class="form-control"> </select>
+            </div>
+            
+			<div class="form-group">
+                <label for="app.description" class="control-label">Description</label>
+                <input type="text" ng-model="app.description" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <submit type="button" class="btn btn-default btn-lg" ng-click="postInfo()">Post App Info</submit>
+            </div>
+        </form>
+        
+        <pre>form = {{app | json}}</pre>
+    </div>
+
+</div>
+
+
+<script src="js/angular.min.js"></script>
+<script src="js/angular-resource.min.js"></script>
+<script src="js/appInfo.js"></script>
+<script src="js/jquery-2.1.0.min.js"></script>
+<script src="js/ui-bootstrap-tpls-0.10.0.min.js"></script>
+
+</body>
+</html>
